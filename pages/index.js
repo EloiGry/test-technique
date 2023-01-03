@@ -3,6 +3,7 @@ import { useState } from 'react'
 import MoviesList from '../components/MoviesList'
 import Pagination from '../components/Layout/Pagination'
 import SearchBar from '../components/Layout/Header/SearchBar'
+import Loading from '../components/Loading'
 
 const fetcher = (...args) => fetch(...args).then((res) => res.json())
 
@@ -20,7 +21,7 @@ export default function Home() {
   const { data : result, error : problem } = useSWR(`${process.env.NEXT_PUBLIC_API_URL}?s=${searchMovies}&apikey=${process.env.NEXT_PUBLIC_API_KEY}`, fetcher)
  
   if (error || problem) return <div>Failed to load</div>
-  if (!data) return <div>Loading...</div>
+  if (!data) return <Loading/>
   return (
     <div> 
       <SearchBar onChange={(e) => handleSearch(e)} movies={result?.Search} searchMovies={searchMovies}/>
