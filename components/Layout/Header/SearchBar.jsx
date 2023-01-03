@@ -20,7 +20,7 @@ const SearchBar = ({onChange, movies, searchMovies}) => {
                             {movies?.map(movie => {
                                 return (
                                     <Link href={`/movie/${movie.imdbID}`} className='top-2 z-10 flex justify-between px-2 py-2 md:w-1/2 ease-in-out' key={movie.imdbID}>
-                                        {movie.Poster !== 'N/A' ? (<img src={movie.Poster} className='mr-2 w-1/4 rounded-t-xl h-24'/>) : (<img src="/No_image_available.svg" className='mr-2 w-1/4 rounded-t-xl h-24'/>)}
+                                        <img src={ movie.Poster !== 'N/A' ? (movie.Poster) : ("/No_image_available.svg") }  className='mr-2 w-1/4 rounded-t-xl h-24'/>
                                         <div className="w-3/4 ml-2">
                                             <p className='text-xs text-black hover:font-semibold'> {movie.Title} </p>
                                             <span className='text-xs text-gray-400'> {movie.Year} </span>

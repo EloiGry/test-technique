@@ -16,7 +16,7 @@ const Movie = () => {
     return (
         <div className='grid h-screen place-items-center'>
             <div className='flex justify-between flex-nowrap border-0 border-gray-300 rounded-2xl shadow-xl m-4 items-center'>
-                {data.Poster !== 'N/A' ? (<img src={data.Poster} className='w-1/2 rounded-l-xl h-96'/>) : (<img src="/No_image_available.svg" className='w-1/2 rounded-l-xl h-96'/>)}
+                <img src={ data.Poster !== 'N/A' ? (data.Poster) : ("/No_image_available.svg") } className='w-1/2 rounded-l-xl h-96'/>
                 <div>
                     <p className="font-semibold text-center my-4"> Title : {data.Title} </p>
                     <p className="text-black mb-4 text-center"> Resume : {data.Plot} </p>
@@ -26,7 +26,7 @@ const Movie = () => {
                     <p className="text-gray-400 mb-4 text-center"> Note : {data.imdbRating} </p>
                 </div>
             </div>
-            <Link href={'/'} className='rounded bg-blue-900 text-white p-8'> Back to the home Page </Link>
+            <Link href={'/'} className='rounded bg-blue-900 text-white p-8 hover:bg-blue-800 duration-300'> Back to the home Page </Link>
         </div>
     );
 };
