@@ -24,11 +24,11 @@ export default function Home() {
     setPage(1)
   }
 
-  const { data, error } = useSWR(`${process.env.NEXT_PUBLIC_API_URL}?s=null&page=${page}&type=${selectOption}&apikey=${process.env.NEXT_PUBLIC_API_KEY}`, fetcher)
+  const { data, error } = useSWR(`${process.env.NEXT_PUBLIC_API_URL}?s=null&type=${selectOption}&page=${page}&apikey=${process.env.NEXT_PUBLIC_API_KEY}`, fetcher)
   const { data : result, error : problem } = useSWR(`${process.env.NEXT_PUBLIC_API_URL}?s=${searchMovies}&apikey=${process.env.NEXT_PUBLIC_API_KEY}`, fetcher)
- 
   if (error || problem) return <div>Failed to load</div>
   if (!data) return <Loading/>
+
 
 
   return (

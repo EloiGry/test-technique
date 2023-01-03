@@ -2,6 +2,8 @@ import useSWR from 'swr'
 import { useRouter } from 'next/router'
 import Link from 'next/link';
 import Loading from '../../components/Loading';
+
+
 const fetcher = (...args) => fetch(...args).then((res) => res.json())
 
 
@@ -14,7 +16,7 @@ const Movie = () => {
     return (
         <div className='grid h-screen place-items-center'>
             <div className='flex justify-between flex-nowrap border-0 border-gray-300 rounded-2xl shadow-xl m-4 items-center'>
-                <img src={data.Poster} className='w-1/2 rounded-l-xl h-96'/>
+                {data.Poster !== 'N/A' ? (<img src={data.Poster} className='w-1/2 rounded-l-xl h-96'/>) : (<img src="/No_image_available.svg" className='w-1/2 rounded-l-xl h-96'/>)}
                 <div>
                     <p className="font-semibold text-center my-4"> Title : {data.Title} </p>
                     <p className="text-black mb-4 text-center"> Resume : {data.Plot} </p>
