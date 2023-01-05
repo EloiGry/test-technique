@@ -9,7 +9,7 @@ import Filter from '../components/Layout/Header/Filter'
 const fetcher = (...args) => fetch(...args).then((res) => res.json())
 
 export default function Home() {
-  const [searchMovies, setSearchMovies] = useState(null)
+  const [searchMovies, setSearchMovies] = useState('')
   const [page, setPage] = useState(1);
   const [selectOption, setSelectOption] = useState('')
 
@@ -24,11 +24,11 @@ export default function Home() {
     setPage(1)
   }
 
-  const { data, error } = useSWR(`${process.env.NEXT_PUBLIC_API_URL}?s=null&type=${selectOption}&page=${page}&apikey=${process.env.NEXT_PUBLIC_API_KEY}`, fetcher)
+  const { data , error } = useSWR(`${process.env.NEXT_PUBLIC_API_URL}?s=001&page=${page}&type=${selectOption}&apikey=${process.env.NEXT_PUBLIC_API_KEY}`, fetcher)
   const { data : result, error : problem } = useSWR(`${process.env.NEXT_PUBLIC_API_URL}?s=${searchMovies}&apikey=${process.env.NEXT_PUBLIC_API_KEY}`, fetcher)
   if (error || problem) return <div>Failed to load</div>
   if (!data) return <Loading/>
-
+  console.log(data);
 
 
   return (
